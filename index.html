@@ -1,74 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI Business eBooks Collection</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Prompt Library – Master Your Business Growth</title>
   <style>
+    :root {
+      --bg: #0f172a;
+      --fg: #ffffff;
+      --brand: #2563eb;
+      --accent: #facc15;
+      --muted: #64748b;
+    }
     body {
       margin: 0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       background: #f8fafc;
       color: #0f172a;
-      padding-top: 60px; /* offset for sticky CTA bar */
+      line-height: 1.6;
     }
-
-    header {
-      background: #0f172a;
-      color: white;
-      padding: 20px;
-      text-align: center;
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.2;
     }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    header h1 { margin: 0; font-size: 28px; }
-
-    /* Sticky CTA Bar */
+    /* Sticky CTA */
     .sticky-cta {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       background: linear-gradient(90deg, #2563eb, #1e40af);
       color: white;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 12px;
-      padding: 12px 20px;
+      padding: 10px 20px;
       z-index: 9999;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      flex-wrap: wrap;
-      text-align: center;
     }
     .sticky-cta p { margin: 0; }
     .sticky-cta .cta-btn {
       background: #facc15;
       color: #0f172a;
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 6px;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       transition: background .2s ease;
     }
     .sticky-cta .cta-btn:hover { background: #eab308; }
+    body { padding-top: 50px; }
 
-    /* Mobile Optimization */
-    @media (max-width: 600px) {
-      .sticky-cta {
-        flex-direction: column;
-        font-size: 13px;
-        gap: 6px;
-        padding: 10px;
-      }
-      .sticky-cta .cta-btn {
-        font-size: 13px;
-        padding: 6px 12px;
-      }
-    }
-
-    /* Hero Carousel */
+    /* Hero Section */
     .hero {
       display: flex;
       justify-content: center;
@@ -76,7 +66,6 @@
       padding: 40px 20px;
       background: linear-gradient(135deg, #0f172a, #1e293b);
     }
-
     .hero-viewport {
       width: 95%;
       max-width: 1100px;
@@ -84,97 +73,121 @@
       overflow: hidden;
       border-radius: 14px;
       box-shadow: 0 18px 45px rgba(2,6,23,0.18);
-      background: #0f172a; /* fallback */
-      position: relative;
-    }
-
-    .slides {
+      background: #0f172a;
       display: flex;
-      width: 500%;        /* 5 slides */
-      height: 100%;
-      transition: transform 1.5s ease-in-out;
+      justify-content: center;
+      align-items: center;
     }
-
-    .slide {
-      flex: 1 0 100%;
-      height: 100%;
-      position: relative;
-      background: #0f172a; /* fallback */
-    }
-
-    .slide img {
+    .hero-banner {
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      position: absolute;  /* always centered */
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 2;
     }
 
-    /* Responsive Hero */
-    @media(max-width: 1024px){.hero-viewport{height:360px}}
-    @media(max-width: 768px){.hero-viewport{height:280px}}
-    @media(max-width: 480px){.hero-viewport{height:220px}}
-
     /* Catalog */
-    .catalog { max-width:1100px; margin:40px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; padding:0 20px; }
-    .card { background:white; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); transition:transform .2s ease, box-shadow .2s ease; }
-    .card:hover { transform:translateY(-5px); box-shadow:0 12px 24px rgba(0,0,0,0.12); }
-    .card img { width:100%; display:block; }
-    .card-body { padding:16px; }
-    .card-body h3 { margin:0 0 10px; font-size:18px; color:#0f172a; }
-    .card-body p { font-size:14px; color:#475569; margin:0 0 12px; }
-    .btn { display:inline-block; background:#2563eb; color:white; padding:10px 16px; border-radius:8px; text-decoration:none; font-size:14px; font-weight:600; transition:background .2s ease; }
-    .btn:hover { background:#1d4ed8; }
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .card img { width: 100%; }
+    .card-body { padding: 16px; }
+    .card-body h3 { font-size: 18px; margin-bottom: 8px; }
+    .btn {
+      display: inline-block;
+      background: var(--brand);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-weight: 600;
+      transition: background .2s ease;
+    }
+    .btn:hover { background: #1d4ed8; }
 
-    /* Reviews Section */
-    .reviews { background:#ffffff; padding:60px 20px; margin-top:40px; border-top:1px solid #e2e8f0; }
-    .reviews h2 { text-align:center; font-size:26px; margin-bottom:30px; color:#0f172a; }
-    .review-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
-    .review { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
-    .review p { font-size:14px; color:#334155; margin:0 0 12px; }
-    .review .author { font-weight:600; font-size:14px; color:#0f172a; }
-    .stars { color:#fbbf24; margin-bottom:10px; }
+    /* Reviews */
+    .reviews {
+      background: #f1f5f9;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .review-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .review {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .review strong { display: block; margin-top: 10px; color: var(--brand); }
 
-    /* FAQ Section */
-    .faq { background:#f9fafb; padding:60px 20px; border-top:1px solid #e2e8f0; }
-    .faq h2 { text-align:center; font-size:26px; margin-bottom:30px; color:#0f172a; }
-    .faq-item { max-width:800px; margin:0 auto 20px; background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
-    .faq-item h3 { margin:0 0 10px; font-size:16px; color:#0f172a; }
-    .faq-item p { margin:0; font-size:14px; color:#475569; }
+    /* FAQ */
+    .faq {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .faq-item {
+      margin-bottom: 20px;
+    }
+    .faq-item h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
 
-    /* Policy Section */
-    .policy { background:#ffffff; padding:60px 20px; border-top:1px solid #e2e8f0; }
-    .policy h2 { text-align:center; font-size:26px; margin-bottom:20px; color:#0f172a; }
-    .policy p { max-width:800px; margin:10px auto; font-size:14px; color:#475569; line-height:1.6; text-align:center; }
+    /* Refund */
+    .policy {
+      background: #f9fafb;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .policy h2 { margin-bottom: 10px; }
+    .policy p { max-width: 800px; margin: 0 auto; }
 
-    footer { text-align:center; padding:20px; font-size:14px; color:#64748b; margin-top:40px; border-top:1px solid #e2e8f0; }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid #e2e8f0;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
-  <!-- Sticky Top CTA -->
+
+  <!-- Sticky CTA -->
   <div class="sticky-cta">
     <p>🔥 Get the <strong>Ultimate AI Prompt Bundle</strong> — Save 45% Today!</p>
     <a class="cta-btn" href="bundle.html">Grab Bundle →</a>
   </div>
 
-  <header>
-    <h1>AI Business Tools — eBook Collection</h1>
-    <p>Master marketing, growth, and productivity with AI-powered prompts</p>
-  </header>
-
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section class="hero">
     <div class="hero-viewport">
-      <div class="slides" id="slides">
-        <div class="slide"><img src="Book-1-Title.png" alt="Book 1"></div>
-        <div class="slide"><img src="Book-2-Title.png" alt="Book 2"></div>
-        <div class="slide"><img src="Book-3-Title.png" alt="Book 3"></div>
-        <div class="slide"><img src="Book-4-Title.png" alt="Book 4"></div>
-        <div class="slide"><img src="Book-Bundle-Title.png" alt="Bundle"></div>
-      </div>
+      <img src="Book-Bundle-Title.png" alt="Ultimate Bundle" class="hero-banner">
     </div>
   </section>
 
@@ -222,82 +235,45 @@
     </div>
   </section>
 
-  <!-- Reviews Section -->
+  <!-- Reviews -->
   <section class="reviews">
-    <h2>What Our Readers Say</h2>
-    <div class="review-grid">
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>“This ebook gave me practical prompts I could plug in right away. Saved me weeks of work.”</p>
-        <div class="author">— Sarah, Freelancer</div>
-      </div>
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>“The bundle is a goldmine. Marketing, sales, customer engagement—all in one place.”</p>
-        <div class="author">— James, Startup Founder</div>
-      </div>
-      <div class="review">
-        <div class="stars">★★★★★</div>
-        <p>“Worth every dollar. The prompts feel like having a full-time marketing assistant.”</p>
-        <div class="author">— Priya, Small Business Owner</div>
-      </div>
+    <h2>What Entrepreneurs Are Saying</h2>
+    <div class="review-list">
+      <div class="review">“This saved me hours every week — the prompts are pure gold!” <strong>– Sarah, Startup Founder</strong></div>
+      <div class="review">“I launched my first campaign in days, not weeks. Worth every penny.” <strong>– James, Marketer</strong></div>
+      <div class="review">“Finally, prompts that actually drive sales, not fluff.” <strong>– Ayesha, Consultant</strong></div>
     </div>
   </section>
 
-  <!-- FAQ Section -->
+  <!-- FAQ -->
   <section class="faq">
     <h2>Frequently Asked Questions</h2>
     <div class="faq-item">
-      <h3>Do I need any special software to use these prompts?</h3>
-      <p>No, you can copy and paste the prompts into any AI tool or assistant you prefer.</p>
+      <h3>Do I need technical skills?</h3>
+      <p>No — just copy, paste, and customize prompts for your business.</p>
     </div>
     <div class="faq-item">
-      <h3>Can I use these prompts for any type of business?</h3>
-      <p>Yes, the prompts are fully customizable. Simply replace placeholders with your own product, service, or audience details.</p>
+      <h3>Can I use this for any industry?</h3>
+      <p>Yes, the prompts are flexible and can be adapted to nearly any niche.</p>
     </div>
     <div class="faq-item">
-      <h3>What if I only want one book and not the bundle?</h3>
-      <p>No problem. Each book is available separately on its landing page, and the bundle is a discounted option for those who want the full library.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Will I get updates in the future?</h3>
-      <p>Yes, once you purchase, you’ll receive free updates if we expand or refine the prompts.</p>
-    </div>
-    <div class="faq-item">
-      <h3>How soon can I access the ebooks?</h3>
-      <p>Immediately! As soon as you complete the purchase on Gumroad, you’ll receive instant download access.</p>
+      <h3>Will I get updates?</h3>
+      <p>Yes, you’ll receive free lifetime updates whenever we refine or expand the prompt packs.</p>
     </div>
   </section>
 
-  <!-- Refund & Updates Policy -->
+  <!-- Refund Policy -->
   <section class="policy">
-    <h2>Refund & Updates Policy</h2>
-    <p>Due to the digital nature of this product, <strong>all sales are final</strong>. Once downloaded, ebooks cannot be returned or refunded.</p>
-    <p>To protect your purchase, Gumroad automatically adds a <strong>watermark with your email</strong> to each PDF.</p>
-    <p>✅ However, you’ll receive <strong>free lifetime updates</strong> whenever we add or improve prompts — ensuring your library stays valuable.</p>
+    <h2>Refund Policy</h2>
+    <p>Due to the digital nature of these products, all sales are final. However, every purchase includes <strong>free lifetime updates</strong> to ensure you always have the latest strategies and tools.</p>
   </section>
 
   <footer>
-    <p>© <span id="y"></span> AI Business Tools. All rights reserved.</p>
+    <p>© <span id="year"></span> AI Prompt Library. All rights reserved.</p>
   </footer>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-    const slides = document.getElementById('slides');
-    const totalSlides = slides.children.length;
-    let index = 0;
-
-    function showSlide(i) {
-      slides.style.transform = `translateX(-${i * 100}%)`;
-    }
-
-    function next() {
-      index = (index + 1) % totalSlides;
-      showSlide(index);
-    }
-
-    setInterval(next, 12000); // 12s per slide
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
