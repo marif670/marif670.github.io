@@ -1,217 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AI Business Playbooks – Landing Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Business eBooks Collection</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      padding-top: 60px; /* offset for sticky CTA bar */
+    }
 
-<!-- 🔹 SEO & Social Preview -->
-<meta name="description" content="AI Business Playbooks – 350+ ready-to-use AI prompts for marketing, customer engagement, automation, and productivity. Boost your business with proven strategies.">
-<meta property="og:title" content="AI Business Playbooks – 350+ Prompts" />
-<meta property="og:description" content="Ready-to-use AI prompt playbooks for SMBs. 4 eBooks + Bundle. Marketing, Engagement, Productivity & Growth." />
-<meta property="og:image" content="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-Bundle-Thumbnail.png" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://marif670.github.io" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI Business Playbooks – 350+ Prompts" />
-<meta name="twitter:description" content="Actionable prompt playbooks to grow your business with AI. Download today." />
-<meta name="twitter:image" content="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-Bundle-Thumbnail.png" />
+    header {
+      background: #0f172a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-<style>
-  :root{
-    --bg:#0f172a;
-    --brand:#3b82f6;
-    --muted:#6b7280;
-    --paper:#ffffff;
-    --card-shadow: 0 10px 30px rgba(2,6,23,0.08);
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:Inter,system-ui,Roboto,Arial;background:#f8fafc;color:#0f172a;-webkit-font-smoothing:antialiased}
-  header{background:var(--bg);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:18px 28px;position:sticky;top:0;z-index:1000}
-  header .brand{font-weight:800;font-size:18px}
-  header nav a{color:#dbeafe;text-decoration:none;margin-left:18px;font-weight:600}
-  header nav a:hover{text-decoration:underline}
+    header h1 { margin: 0; font-size: 28px; }
 
-  /* HERO */
-  .hero{position:relative;width:100%;background:var(--bg);display:flex;justify-content:center;padding:24px 0;}
-  .hero-viewport{width:95%;max-width:1100px;height:420px;overflow:hidden;border-radius:14px;box-shadow:0 18px 45px rgba(2,6,23,0.18);background:#0f172a;position:relative}
-  .slides{display:flex;width:500%;height:100%;transition:transform 1.5s ease-in-out}
-  .slide{flex:1 0 100%;display:flex;justify-content:center;align-items:center}
-  .slide img{width:100%;height:100%;object-fit:contain;border-radius:8px;background:#0b1220;box-shadow:0 12px 30px rgba(2,6,23,0.18)}
-  .arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(2,6,23,0.45);color:#fff;cursor:pointer;z-index:30}
-  .arrow.left{left:18px}.arrow.right{right:18px}
-  .arrow:hover{background:rgba(2,6,23,0.64)}
-  .dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:40}
-  .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,0.35);cursor:pointer}
-  .dot.active{background:#fff;transform:scale(1.25)}
+    /* Sticky CTA Bar */
+    .sticky-cta {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 20px;
+      z-index: 9999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .sticky-cta p { margin: 0; }
+    .sticky-cta .cta-btn {
+      background: #facc15;
+      color: #0f172a;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background .2s ease;
+    }
+    .sticky-cta .cta-btn:hover { background: #eab308; }
 
-  /* Sections */
-  .intro{max-width:980px;margin:36px auto 8px;padding:0 24px;text-align:center}
-  .intro h2{font-size:30px;margin:0 0 8px}
-  .intro p{color:var(--muted);font-size:17px;line-height:1.6}
+    /* Mobile Optimization */
+    @media (max-width: 600px) {
+      .sticky-cta {
+        flex-direction: column;
+        font-size: 13px;
+        gap: 6px;
+        padding: 10px;
+      }
+      .sticky-cta .cta-btn {
+        font-size: 13px;
+        padding: 6px 12px;
+      }
+    }
 
-  .benefits{max-width:1100px;margin:34px auto;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
-  .benefit{background:var(--paper);border-radius:12px;padding:20px;box-shadow:var(--card-shadow);text-align:center}
-  .benefit h3{margin:0 0 8px;font-size:18px}.benefit p{margin:0;color:var(--muted);font-size:14px}
+    /* Hero Carousel */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+    .hero-viewport {
+      width: 95%; max-width: 1100px; height: 420px;
+      overflow: hidden; border-radius: 14px;
+      box-shadow: 0 18px 45px rgba(2,6,23,0.18);
+      background: #0f172a; position: relative;
+    }
+    .slides { display: flex; width: 500%; height: 100%; transition: transform 1.5s ease-in-out; }
+    .slide { flex: 1 0 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #0f172a; position: relative; }
+    .slide img { width: 100%; height: 100%; object-fit: contain; position: relative; z-index: 2; }
 
-  .catalog{max-width:1100px;margin:28px auto;padding:0 20px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
-  .card{background:var(--paper);border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);transition:transform .18s,box-shadow .18s;text-align:center}
-  .card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(2,6,23,0.12)}
-  .card img{max-width:100%;height:150px;object-fit:contain;background:#f3f4f6;padding:12px}
-  .card h3{margin:12px 0 6px;font-size:18px}.card p{margin:0 0 12px;color:var(--muted);font-size:14px}
-  .card a{display:inline-block;margin-bottom:16px;background:var(--brand);color:#fff;padding:10px 14px;border-radius:8px;font-weight:700;text-decoration:none}
+    /* Responsive Hero */
+    @media(max-width: 1024px){.hero-viewport{height:360px}}
+    @media(max-width: 768px){.hero-viewport{height:280px}}
+    @media(max-width: 480px){.hero-viewport{height:220px}}
 
-  .reviews-wrap{max-width:1100px;margin:20px auto 40px;padding:24px 20px}
-  .reviews-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-  .reviews-header h2{margin:0;font-size:22px}
-  .star-summary{color:#b45309;font-weight:700}
-  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-  .review{background:var(--paper);padding:18px;border-radius:12px;box-shadow:var(--card-shadow)}
-  .review .meta{display:flex;gap:12px;align-items:center}
-  .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);display:grid;place-items:center;color:#fff;font-weight:800}
-  .review .who{font-weight:700}.review .text{margin-top:10px;color:var(--muted);font-size:14px}
+    /* Catalog */
+    .catalog { max-width:1100px; margin:40px auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; padding:0 20px; }
+    .card { background:white; border:1px solid #e2e8f0; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.08); transition:transform .2s ease, box-shadow .2s ease; }
+    .card:hover { transform:translateY(-5px); box-shadow:0 12px 24px rgba(0,0,0,0.12); }
+    .card img { width:100%; display:block; }
+    .card-body { padding:16px; }
+    .card-body h3 { margin:0 0 10px; font-size:18px; color:#0f172a; }
+    .card-body p { font-size:14px; color:#475569; margin:0 0 12px; }
+    .btn { display:inline-block; background:#2563eb; color:white; padding:10px 16px; border-radius:8px; text-decoration:none; font-size:14px; font-weight:600; transition:background .2s ease; }
+    .btn:hover { background:#1d4ed8; }
 
-  .final-cta{margin:44px auto 80px;max-width:900px;text-align:center;padding:26px;border-radius:12px;background:linear-gradient(90deg,var(--brand),#1e3a8a);color:#fff}
-  .final-cta h3{margin:0 0 6px;font-size:22px}.final-cta p{margin:0 0 18px}
+    /* Reviews Section */
+    .reviews { background:#ffffff; padding:60px 20px; margin-top:40px; border-top:1px solid #e2e8f0; }
+    .reviews h2 { text-align:center; font-size:26px; margin-bottom:30px; color:#0f172a; }
+    .review-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+    .review { background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    .review p { font-size:14px; color:#334155; margin:0 0 12px; }
+    .review .author { font-weight:600; font-size:14px; color:#0f172a; }
+    .stars { color:#fbbf24; margin-bottom:10px; }
 
-  footer{background:#f3f4f6;color:var(--muted);text-align:center;padding:22px;font-size:14px}
+    /* FAQ Section */
+    .faq { background:#f9fafb; padding:60px 20px; border-top:1px solid #e2e8f0; }
+    .faq h2 { text-align:center; font-size:26px; margin-bottom:30px; color:#0f172a; }
+    .faq-item { max-width:800px; margin:0 auto 20px; background:white; border:1px solid #e2e8f0; border-radius:12px; padding:20px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    .faq-item h3 { margin:0 0 10px; font-size:16px; color:#0f172a; }
+    .faq-item p { margin:0; font-size:14px; color:#475569; }
 
-  @media(max-width:640px){.hero-viewport{height:250px}}
-</style>
+    /* Policy Section */
+    .policy { background:#ffffff; padding:60px 20px; border-top:1px solid #e2e8f0; }
+    .policy h2 { text-align:center; font-size:26px; margin-bottom:20px; color:#0f172a; }
+    .policy p { max-width:800px; margin:10px auto; font-size:14px; color:#475569; line-height:1.6; text-align:center; }
+
+    footer { text-align:center; padding:20px; font-size:14px; color:#64748b; margin-top:40px; border-top:1px solid #e2e8f0; }
+  </style>
 </head>
 <body>
+  <!-- Sticky Top CTA -->
+  <div class="sticky-cta">
+    <p>🔥 Get the <strong>Ultimate AI Prompt Bundle</strong> — Save 45% Today!</p>
+    <a class="cta-btn" href="https://marif670.gumroad.com/l/ultimatebundle" target="_blank">Grab Bundle →</a>
+  </div>
 
-<header>
-  <div class="brand">AI Business Playbooks</div>
-  <nav>
-    <a href="#catalog">Catalog</a>
-    <a href="#reviews">Reviews</a>
-    <a href="https://marif670.gumroad.com" target="_blank">Store</a>
-  </nav>
-</header>
+  <header>
+    <h1>AI Business Tools — eBook Collection</h1>
+    <p>Master marketing, growth, and productivity with AI-powered prompts</p>
+  </header>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-viewport" id="heroViewport">
-    <div class="slides" id="slides">
-      <div class="slide"><img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-1-Title.png" alt="The AI-Powered SMB"></div>
-      <div class="slide"><img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-2-Title.png" alt="Advanced Marketing Mastery"></div>
-      <div class="slide"><img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-3-Title.png" alt="Customer Engagement Excellence"></div>
-      <div class="slide"><img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-4-Title.png" alt="AI Productivity Toolkit"></div>
-      <div class="slide"><img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-Bundle-Title.png" alt="Ultimate Bundle"></div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-viewport">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="Book-1-Title.png" alt="Book 1"></div>
+        <div class="slide"><img src="Book-2-Title.png" alt="Book 2"></div>
+        <div class="slide"><img src="Book-3-Title.png" alt="Book 3"></div>
+        <div class="slide"><img src="Book-4-Title.png" alt="Book 4"></div>
+        <div class="slide"><img src="Book-Bundle-Title.png" alt="Bundle"></div>
+      </div>
     </div>
-    <div class="arrow left" id="prev">‹</div>
-    <div class="arrow right" id="next">›</div>
-    <div class="dots" id="dots"></div>
-  </div>
-</section>
+  </section>
 
-<!-- INTRO -->
-<section class="intro">
-  <h2>Turn AI Prompts Into Business Results</h2>
-  <p>350+ practical, tested prompts across four eBooks — marketing, engagement, automation and productivity. Use them as templates, tweak for your audience, and launch faster.</p>
-</section>
+  <!-- Catalog -->
+  <section class="catalog">
+    <div class="card">
+      <img src="Book-1-Thumbnail.png" alt="Book 1">
+      <div class="card-body">
+        <h3>The AI-Powered SMB</h3>
+        <p>50 prompts to 10X your productivity and growth.</p>
+        <a class="btn" href="https://marif670.gumroad.com/l/50prompts" target="_blank">View Book</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Book-2-Thumbnail.png" alt="Book 2">
+      <div class="card-body">
+        <h3>Advanced Marketing Playbook</h3>
+        <p>75 prompts for campaigns, ads, and strategies.</p>
+        <a class="btn" href="https://marif670.gumroad.com/l/75prompts" target="_blank">View Book</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Book-3-Thumbnail.png" alt="Book 3">
+      <div class="card-body">
+        <h3>Customer Engagement Toolkit</h3>
+        <p>100 prompts for building trust and loyalty.</p>
+        <a class="btn" href="https://marif670.gumroad.com/l/100prompts" target="_blank">View Book</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Book-4-Thumbnail.png" alt="Book 4">
+      <div class="card-body">
+        <h3>Business Growth Engine</h3>
+        <p>125 prompts for scaling productivity & revenue.</p>
+        <a class="btn" href="https://marif670.gumroad.com/l/125prompts" target="_blank">View Book</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="Book-Bundle-Thumbnail.png" alt="Bundle">
+      <div class="card-body">
+        <h3>Ultimate AI Prompt Bundle</h3>
+        <p>All 4 books combined — 350+ prompts to dominate your niche.</p>
+        <a class="btn" href="https://marif670.gumroad.com/l/ultimatebundle" target="_blank">Get Bundle</a>
+      </div>
+    </div>
+  </section>
 
-<!-- BENEFITS -->
-<section class="benefits">
-  <div class="benefit"><h3>Save time</h3><p>Plug-and-play prompts for ads, emails, and content.</p></div>
-  <div class="benefit"><h3>Grow revenue</h3><p>Prompts crafted to improve conversions and reduce costs.</p></div>
-  <div class="benefit"><h3>Retain customers</h3><p>Onboarding and nurturing sequences that work.</p></div>
-  <div class="benefit"><h3>Automate workflows</h3><p>Turn repetitive tasks into reliable systems.</p></div>
-</section>
+  <!-- Reviews Section -->
+  <section class="reviews">
+    <h2>What Our Readers Say</h2>
+    <div class="review-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“This ebook gave me practical prompts I could plug in right away. Saved me weeks of work.”</p>
+        <div class="author">— Sarah, Freelancer</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“The bundle is a goldmine. Marketing, sales, customer engagement—all in one place.”</p>
+        <div class="author">— James, Startup Founder</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>“Worth every dollar. The prompts feel like having a full-time marketing assistant.”</p>
+        <div class="author">— Priya, Small Business Owner</div>
+      </div>
+    </div>
+  </section>
 
-<!-- CATALOG -->
-<section id="catalog" class="catalog">
-  <div class="card">
-    <img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-1-Thumbnail.png" alt="Book 1">
-    <h3>The AI-Powered SMB</h3>
-    <p>50 prompts to get results fast.</p>
-    <a href="https://marif670.gumroad.com/l/50prompts">Get Free</a>
-  </div>
-  <div class="card">
-    <img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-2-Thumbnail.png" alt="Book 2">
-    <h3>Advanced Marketing Mastery</h3>
-    <p>75 prompts for campaigns & funnels.</p>
-    <a href="book2.html">View Details</a>
-  </div>
-  <div class="card">
-    <img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-3-Thumbnail.png" alt="Book 3">
-    <h3>Customer Engagement Excellence</h3>
-    <p>100 prompts for retention & support.</p>
-    <a href="book3.html">View Details</a>
-  </div>
-  <div class="card">
-    <img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-4-Thumbnail.png" alt="Book 4">
-    <h3>AI Productivity Toolkit</h3>
-    <p>125 prompts to automate & scale.</p>
-    <a href="book4.html">View Details</a>
-  </div>
-  <div class="card">
-    <img src="https://raw.githubusercontent.com/marif670/marif670.github.io/main/Book-Bundle-Thumbnail.png" alt="Bundle">
-    <h3>Ultimate AI Bundle</h3>
-    <p>All 4 books (350+ prompts).</p>
-    <a href="bundle.html">View Details</a>
-  </div>
-</section>
+  <!-- FAQ Section -->
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Do I need any special software to use these prompts?</h3>
+      <p>No, you can copy and paste the prompts into any AI tool or assistant you prefer.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use these prompts for any type of business?</h3>
+      <p>Yes, the prompts are fully customizable. Simply replace placeholders with your own product, service, or audience details.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if I only want one book and not the bundle?</h3>
+      <p>No problem. Each book is available separately on Gumroad, and the bundle is a discounted option for those who want the full library.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Will I get updates in the future?</h3>
+      <p>Yes, once you purchase, you’ll receive free updates if we expand or refine the prompts.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How soon can I access the ebooks?</h3>
+      <p>Immediately! As soon as you complete the purchase on Gumroad, you’ll receive instant download access.</p>
+    </div>
+  </section>
 
-<!-- REVIEWS -->
-<section id="reviews" class="reviews-wrap">
-  <div class="reviews-header">
-    <h2>What readers say</h2>
-    <div class="star-summary">⭐ 4.8 (237 reviews)</div>
-  </div>
-  <div class="reviews">
-    <div class="review"><div class="meta"><div class="avatar">AS</div><div><div class="who">Aisha S.</div><div>Founder</div></div></div><div class="text">“Black Friday CTR up 38% — these prompts worked out of the box.”</div></div>
-    <div class="review"><div class="meta"><div class="avatar">JM</div><div><div class="who">James M.</div><div>Marketer</div></div></div><div class="text">“I use them every week — they save hours.”</div></div>
-    <div class="review"><div class="meta"><div class="avatar">SR</div><div><div class="who">Sarah R.</div><div>Agency</div></div></div><div class="text">“Client retention improved immediately.”</div></div>
-    <div class="review"><div class="meta"><div class="avatar">MB</div><div><div class="who">Mohammad B.</div><div>Solopreneur</div></div></div><div class="text">“Packed with practical prompts. Great value.”</div></div>
-  </div>
-</section>
+  <!-- Refund & Updates Policy -->
+  <section class="policy">
+    <h2>Refund & Updates Policy</h2>
+    <p>Due to the digital nature of this product, <strong>all sales are final</strong>. Once downloaded, ebooks cannot be returned or refunded.</p>
+    <p>To protect your purchase, Gumroad automatically adds a <strong>watermark with your email</strong> to each PDF.</p>
+    <p>✅ However, you’ll receive <strong>free lifetime updates</strong> whenever we add or improve prompts — ensuring your library stays valuable.</p>
+  </section>
 
-<!-- CTA -->
-<section class="final-cta">
-  <h3>Get the complete 350+ prompt bundle</h3>
-  <p>All four books, one price — instantly usable prompts to grow your business.</p>
-  <p><a href="https://marif670.gumroad.com/l/ultimatebundle" style="background:#fff;color:var(--brand);padding:12px 18px;border-radius:8px;text-decoration:none;font-weight:700">Grab the Bundle</a></p>
-</section>
+  <footer>
+    <p>© <span id="y"></span> AI Business Tools. All rights reserved.</p>
+  </footer>
 
-<footer>© <span id="year"></span> AI Business Playbooks</footer>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-<script>
-const slides=document.getElementById("slides");
-const total=slides.children.length;
-let i=0;
-let timer=null;
-const dots=document.getElementById("dots");
+    const slides = document.getElementById('slides');
+    const totalSlides = slides.children.length;
+    let index = 0;
 
-for(let j=0;j<total;j++){
-  const d=document.createElement("div");
-  d.className="dot"+(j===0?" active":"");
-  d.onclick=()=>{go(j);restart()};
-  dots.appendChild(d);
-}
-const dotEls=dots.querySelectorAll(".dot");
+    function showSlide(i) {
+      slides.style.transform = `translateX(-${i * 100}%)`;
+    }
 
-function go(n){
-  i=(n+total)%total;
-  slides.style.transform=`translateX(-${i*100}%)`;
-  dotEls.forEach((d,k)=>d.classList.toggle("active",k===i));
-}
-function next(){go(i+1)}
-function prev(){go(i-1)}
+    function next() {
+      index = (index + 1) % totalSlides;
+      showSlide(index);
+    }
 
-function start(){if(timer)return;timer=setInterval(next,12000)} // stay 12s per slide
-function stop(){clearInterval(timer);timer=null}
-function restart(){stop();start()}
-
-document.getElementById("next").onclick=()=>{next();restart()}
-document.getElementById("prev").onclick=()=>{prev();restart()}
-document.getElementById("heroViewport").onmouseenter=stop;
-document.getElementById("heroViewport").onmouseleave=start;
-
-go(0);
-start();
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
+    setInterval(next, 12000); // 12s per slide
+  </script>
 </body>
 </html>
