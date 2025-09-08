@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Prompt Playbooks – Landing Page</title>
+  <title>AI Business Playbooks – Landing Page</title>
   <style>
     :root {
       --bg: #0f172a;
@@ -23,16 +23,30 @@
     header {
       background: var(--bg);
       color: #fff;
-      padding: 16px 28px;
+      padding: 18px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     header h1 {
-      font-size: 20px;
+      font-size: 22px;
       margin: 0;
       font-weight: 700;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+    }
+
+    header nav a:hover {
+      text-decoration: underline;
     }
 
     /* Hero Carousel */
@@ -48,7 +62,7 @@
       display: flex;
       width: 500%; /* 5 slides */
       height: 100%;
-      transition: transform 0.8s ease-in-out;
+      transition: transform 1s ease-in-out;
     }
 
     .slide {
@@ -67,6 +81,26 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.25);
     }
 
+    /* Intro Section */
+    .intro {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .intro h2 {
+      font-size: 28px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .intro p {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
     /* Catalog */
     .catalog {
       display: grid;
@@ -83,13 +117,13 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.12);
     }
 
     .card img {
@@ -102,14 +136,14 @@
 
     .card h3 {
       margin: 16px 12px 8px;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--text);
     }
 
     .card p {
       margin: 0 12px 16px;
-      font-size: 14px;
+      font-size: 15px;
       color: var(--muted);
     }
 
@@ -153,7 +187,8 @@
 <header>
   <h1>AI Business Playbooks</h1>
   <nav>
-    <a href="#catalog" style="color:#fff; text-decoration:none; font-weight:600;">Catalog</a>
+    <a href="#catalog">Catalog</a>
+    <a href="https://marif670.gumroad.com" target="_blank">Store</a>
   </nav>
 </header>
 
@@ -166,6 +201,13 @@
     <div class="slide"><img src="Book-4-Title.png" alt="125 Productivity & Growth Prompts"></div>
     <div class="slide"><img src="Book-Bundle-Title.png" alt="Ultimate AI Prompt Bundle"></div>
   </div>
+</section>
+
+<!-- Intro -->
+<section class="intro">
+  <h2>Boost Your Business with AI Playbooks</h2>
+  <p>Actionable, ready-to-use prompt collections designed to save time, grow your business, and give you a competitive edge.  
+  From marketing to automation to productivity – everything you need is here.</p>
 </section>
 
 <!-- Catalog -->
@@ -181,28 +223,28 @@
     <img src="Book-2-Thumbnail.png" alt="Book 2 Thumbnail">
     <h3>Advanced Marketing Prompts</h3>
     <p>75 expert-level prompts to elevate marketing strategy.</p>
-    <a href="https://marif670.gumroad.com/l/75prompts" target="_blank">Buy Now</a>
+    <a href="book2.html">View Details</a>
   </div>
 
   <div class="card">
     <img src="Book-3-Thumbnail.png" alt="Book 3 Thumbnail">
     <h3>Automation & Engagement</h3>
     <p>100 powerful prompts for customer success and scaling.</p>
-    <a href="https://marif670.gumroad.com/l/100prompts" target="_blank">Buy Now</a>
+    <a href="book3.html">View Details</a>
   </div>
 
   <div class="card">
     <img src="Book-4-Thumbnail.png" alt="Book 4 Thumbnail">
     <h3>Productivity & Growth</h3>
     <p>125 advanced prompts to boost efficiency and growth.</p>
-    <a href="https://marif670.gumroad.com/l/125prompts" target="_blank">Buy Now</a>
+    <a href="book4.html">View Details</a>
   </div>
 
   <div class="card">
     <img src="Book-Bundle-Thumbnail.png" alt="Bundle Thumbnail">
     <h3>Ultimate AI Prompt Bundle</h3>
     <p>Get all 4 books together and save big.</p>
-    <a href="https://marif670.gumroad.com/l/ultimatebundle" target="_blank">Buy Bundle</a>
+    <a href="bundle.html">View Details</a>
   </div>
 </section>
 
@@ -221,7 +263,7 @@
   setInterval(() => {
     index = (index + 1) % totalSlides;
     slides.style.transform = `translateX(-${index * 100}%)`;
-  }, 4000);
+  }, 4000); // 4s per slide
 </script>
 
 </body>
