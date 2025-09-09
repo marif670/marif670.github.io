@@ -1,1 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI-Powered SMB: 50-Prompt Blueprint</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --fg: #ffffff;
+      --brand: #2563eb;
+      --accent: #facc15;
+      --muted: #64748b;
+    }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.6;
+      padding-top: 50px;
+    }
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
+    /* Sticky CTA */
+    .sticky-cta {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      color: white;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 20px;
+      z-index: 9999;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    .sticky-cta p { margin: 0; }
+    .sticky-cta .cta-btn {
+      background: #facc15;
+      color: #0f172a;
+      padding: 6px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: background .2s ease;
+    }
+    .sticky-cta .cta-btn:hover { background: #eab308; }
+
+    /* Hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      text-align: center;
+      color: white;
+    }
+    .hero img {
+      max-width: 240px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 18px; opacity: 0.9; }
+
+    /* Section */
+    section {
+      padding: 50px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: #1e293b;
+    }
+
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 1px solid #bfdbfe;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 40px 0;
+    }
+    .cta-box h2 { margin-bottom: 16px; }
+    .cta-btn-main {
+      display: inline-block;
+      background: var(--brand);
+      color: white;
+      padding: 12px 22px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background .2s ease;
+    }
+    .cta-btn-main:hover { background: #1d4ed8; }
+
+    /* Reviews, FAQ, Policy (same as main site) */
+    .reviews {
+      background: #f1f5f9;
+      padding: 50px 20px;
+      text-align: center;
+    }
+    .review-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .review {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      font-size: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .review strong { display: block; margin-top: 10px; color: var(--brand); }
+
+    .faq {
+      padding: 50px 20px;
+    }
+    .faq-item { margin-bottom: 20px; }
+    .faq-item h3 { margin-bottom: 6px; }
+
+    .policy {
+      background: #f9fafb;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .policy h2 { margin-bottom: 10px; }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 14px;
+      color: var(--muted);
+      border-top: 1px solid #e2e8f0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky CTA -->
+  <div class="sticky-cta">
+    <p>🔥 Get the <strong>Ultimate AI Prompt Bundle</strong> — Save 45% Today!</p>
+    <a class="cta-btn" href="bundle.html">Grab Bundle →</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="Book-1-Title.png" alt="The AI-Powered SMB">
+    <h1>The AI-Powered SMB</h1>
+    <p>Your 50-Prompt Blueprint to 10X Productivity & Growth</p>
+  </section>
+
+  <!-- About -->
+  <section>
+    <h2>Why This Book?</h2>
+    <p>As a small business owner, you juggle multiple roles — CEO, marketer, customer service, and more. This book is your shortcut to scale smarter. Inside, you’ll find 50 carefully crafted prompts designed to save time, spark ideas, and help you grow your business faster.</p>
+  </section>
+
+  <!-- What's Inside -->
+  <section>
+    <h2>What’s Inside?</h2>
+    <ul>
+      <li>10 Marketing & Advertising Prompts</li>
+      <li>10 Social Media Growth Prompts</li>
+      <li>10 Customer Engagement Prompts</li>
+      <li>10 Content Creation Prompts</li>
+      <li>10 Productivity & Growth Prompts</li>
+    </ul>
+  </section>
+
+  <!-- Benefits -->
+  <section>
+    <h2>Benefits You’ll Gain</h2>
+    <ul>
+      <li>Save hours every week on repetitive tasks</li>
+      <li>Launch campaigns faster with proven frameworks</li>
+      <li>Boost engagement and build stronger customer relationships</li>
+      <li>Create professional content effortlessly</li>
+      <li>Focus on scaling your business instead of busywork</li>
+    </ul>
+  </section>
+
+  <!-- How to Use -->
+  <section>
+    <h2>How to Use the Prompts</h2>
+    <p>It’s simple:</p>
+    <ol>
+      <li>Replace the placeholders in <code>[square brackets]</code> with your business details.</li>
+      <li>Paste into your favorite AI tool and review the output.</li>
+      <li>Refine tone and style to match your brand.</li>
+      <li>Stack multiple prompts together for maximum results.</li>
+    </ol>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-box">
+    <h2>Ready to Power Up Your Business?</h2>
+    <p>Get your copy of <strong>The AI-Powered SMB</strong> today and start working smarter, not harder.</p>
+    <a class="cta-btn-main" href="https://marif670.gumroad.com/l/50prompts" target="_blank">Get Instant Access →</a>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews">
+    <h2>What Readers Are Saying</h2>
+    <div class="review-list">
+      <div class="review">“This gave me back 10 hours a week. Absolutely essential!” <strong>– Priya, Founder</strong></div>
+      <div class="review">“The prompts aren’t generic — they actually generate campaigns I can use.” <strong>– Mark, Consultant</strong></div>
+      <div class="review">“Finally, an ebook that delivers practical value.” <strong>– Lina, Freelancer</strong></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <h3>Who is this book for?</h3>
+      <p>Small business owners, freelancers, consultants, and marketers who want to scale with less stress.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Do I need technical expertise?</h3>
+      <p>No — the prompts are written in plain language. Just copy, paste, and customize.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How quickly will I see results?</h3>
+      <p>You can start implementing prompts the same day and see improvements within a week.</p>
+    </div>
+  </section>
+
+  <!-- Refund Policy -->
+  <section class="policy">
+    <h2>Refund Policy</h2>
+    <p>Due to the digital nature of this product, all sales are final. However, your purchase includes <strong>free lifetime updates</strong> so you always have the latest strategies.</p>
+  </section>
+
+  <footer>
+    <p>© <span id="year"></span> AI Prompt Library. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
