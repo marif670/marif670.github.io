@@ -3,140 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Advanced Marketing Playbook — 75 AI Prompts</title>
+  <title>Advanced Marketing Playbook: 75 Growth Prompts</title>
   <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-    }
-    header {
-      background: linear-gradient(135deg,#2563eb,#1e40af);
-      color: white; text-align: center; padding: 50px 20px;
-    }
-    header img {
-      max-width: 220px; margin-bottom: 20px;
-      box-shadow: 0 12px 28px rgba(0,0,0,0.25); border-radius: 8px;
-    }
-    header h1 { font-size: 32px; margin: 10px 0; }
-    header p { font-size: 16px; opacity: 0.9; }
-
-    .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-
-    .section { margin-bottom: 60px; }
-    .section h2 { font-size: 26px; margin-bottom: 20px; color:#1e293b; }
-    .section p { font-size: 15px; line-height: 1.6; color:#475569; }
-
-    ul.benefits { list-style: "✅ "; padding-left: 20px; }
-    ul.benefits li { margin-bottom: 10px; font-size: 15px; }
-
-    .sample-prompts { background:#f1f5f9; padding:20px; border-radius:10px; border:1px solid #e2e8f0; }
-    .sample-prompts p { margin: 8px 0; font-family: monospace; font-size: 14px; }
-
-    .reviews, .faq, .policy { background:white; border:1px solid #e2e8f0; padding:20px; border-radius:10px; margin-bottom:40px; }
-    .review { margin-bottom:20px; }
-    .review .stars { color:#fbbf24; }
-    .review .author { font-weight:600; font-size:14px; }
-
-    .cta-box { text-align:center; margin:60px 0; }
-    .cta-btn {
-      background:#2563eb; color:white; padding:14px 28px; font-size:18px;
-      border-radius:8px; text-decoration:none; font-weight:700;
-      transition: background .2s ease;
-    }
-    .cta-btn:hover { background:#1d4ed8; }
-
-    footer { text-align:center; font-size:14px; color:#64748b; padding:30px; border-top:1px solid #e2e8f0; margin-top:40px; }
+    :root{--brand:#2563eb;--accent:#facc15;--muted:#64748b}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6;padding-top:56px}
+    a{color:var(--brand);text-decoration:none}a:hover{text-decoration:underline}
+    .sticky-cta{position:fixed;top:0;left:0;width:100%;background:linear-gradient(90deg,#2563eb,#1e40af);color:#fff;font-weight:600;display:flex;justify-content:center;align-items:center;gap:12px;padding:10px 18px;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+    .sticky-cta .cta-btn{background:var(--accent);color:#0f172a;padding:8px 14px;border-radius:6px;font-weight:700;text-decoration:none}
+    .hero{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:56px 20px;background:linear-gradient(135deg,#0f172a,#1e293b);color:#fff;text-align:center}
+    .hero img{max-width:260px;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,23,.4);margin-bottom:18px}
+    .hero h1{font-size:28px;margin:8px 0}.hero p{opacity:.95;margin:0}
+    .container{max-width:1000px;margin:36px auto;padding:0 20px}
+    section{margin-bottom:36px}h2{font-size:22px;color:#0f172a;margin-bottom:10px}
+    p,li{color:#334155}ul.bullets{padding-left:18px}
+    .sample{background:#ffffff;border:1px solid #e6eefc;padding:16px;border-radius:10px;font-family:monospace;font-size:14px}
+    .cta-box{background:linear-gradient(135deg,#eff6ff,#dbeafe);border:1px solid #bfdbfe;padding:26px;border-radius:12px;text-align:center}
+    .cta-main{display:inline-block;background:var(--brand);color:#fff;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none}
+    .reviews{background:#f1f5f9;padding:36px;border-radius:10px;border:1px solid #e6eefc}
+    .review-item{background:#fff;padding:14px;border-radius:8px;border:1px solid #e9f0fb;margin-bottom:12px}
+    .faq .faq-item{background:#fff;padding:14px;border-radius:8px;border:1px solid #e9f0fb;margin-bottom:12px}
+    footer{text-align:center;padding:22px;color:var(--muted);border-top:1px solid #e6eefc;margin-top:24px}
+    @media(max-width:600px){.hero img{max-width:180px}body{padding-top:72px}}
   </style>
 </head>
 <body>
-
-<header>
-  <img src="Book-2-Title.png" alt="Advanced Marketing Playbook Cover">
-  <h1>Advanced Marketing Playbook</h1>
-  <p>75 AI-powered prompts to design campaigns, craft ads, and scale your brand</p>
-</header>
-
-<div class="container">
-
-  <!-- About -->
-  <section class="section">
-    <h2>What’s Inside</h2>
-    <p>This ebook is your advanced toolkit for marketing success. Inside you’ll find <strong>75 professional prompts</strong> designed to help you create high-performing campaigns, refine ad copy, and optimize strategy — without spending hours guessing what works.</p>
-  </section>
-
-  <!-- Benefits -->
-  <section class="section">
-    <h2>Why This Book?</h2>
-    <ul class="benefits">
-      <li>Launch ad campaigns in minutes with pre-tested structures.</li>
-      <li>Access advanced prompts tailored for Facebook, Google, LinkedIn, and more.</li>
-      <li>Design funnels, landing pages, and offers that actually convert.</li>
-      <li>Save hours of brainstorming and get professional-quality output instantly.</li>
-      <li>Stay ahead with prompts adaptable to any business or niche.</li>
-    </ul>
-  </section>
-
-  <!-- Sample Prompts -->
-  <section class="section sample-prompts">
-    <h2>Sample Prompts</h2>
-    <p><strong>Prompt #12:</strong> “Act as a digital ad strategist. Create a 3-ad Facebook campaign for [product/service], targeting [audience]. Provide headline, copy, image idea, and CTA.”</p>
-    <p><strong>Prompt #28:</strong> “Write 5 variations of Google Ads for [offer]. Focus on urgency, benefits, and credibility. Keep headlines under 30 characters.”</p>
-    <p><strong>Prompt #41:</strong> “Design a 4-step marketing funnel for [business type], including awareness, engagement, conversion, and retention strategies.”</p>
-  </section>
-
-  <!-- Reviews -->
-  <section class="reviews">
-    <h2>Reader Feedback</h2>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>“I ran my first proper ad campaign using these prompts. Way easier than starting from scratch.”</p>
-      <div class="author">— Alex, Startup Founder</div>
-    </div>
-    <div class="review">
-      <div class="stars">★★★★★</div>
-      <p>“This book paid for itself in one week. The ad templates worked right away.”</p>
-      <div class="author">— Fatima, Ecommerce Owner</div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="faq">
-    <h2>FAQ</h2>
-    <div class="faq-item">
-      <h3>Are the prompts beginner-friendly?</h3>
-      <p>Yes. Each prompt is written clearly, with placeholders you can adapt to your business.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Do I need expensive tools?</h3>
-      <p>No. You can use these prompts with any AI tool of your choice — free or paid.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Can I use them for any business?</h3>
-      <p>Yes, they are designed to be customizable across industries and niches.</p>
-    </div>
-  </section>
-
-  <!-- Policy -->
-  <section class="policy">
-    <h2>Refund & Updates Policy</h2>
-    <p>Due to the digital nature of this ebook, <strong>all sales are final</strong>. Gumroad will watermark your copy with your email to protect your purchase. However, you’ll also receive <strong>lifetime free updates</strong> as we refine or expand the playbook.</p>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta-box">
-    <a href="https://marif670.gumroad.com/l/75prompts" class="cta-btn" target="_blank">Get the Advanced Marketing Playbook →</a>
+  <div class="sticky-cta">
+    <div>🔥 Ultimate AI Prompt Bundle — Save 45%</div>
+    <a class="cta-btn" href="bundle.html">Get Bundle</a>
   </div>
 
-</div>
+  <header class="hero">
+    <img src="Book-2-Title.png" alt="Advanced Marketing Playbook: 75 Growth Prompts cover">
+    <h1>Advanced Marketing Playbook: 75 Growth Prompts</h1>
+    <p>Advanced, campaign-ready prompts for paid ads, funnels, and conversion optimization.</p>
+  </header>
 
-<footer>
-  <p>© <span id="y"></span> AI Business Tools. All rights reserved.</p>
-</footer>
+  <div class="container">
+    <section>
+      <h2>About this book</h2>
+      <p>A focused collection of 75 prompts for marketers who need high-quality ad copy, funnel plans, and campaign frameworks that convert.</p>
+    </section>
 
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-</script>
+    <section>
+      <h2>What’s inside</h2>
+      <ul class="bullets">
+        <li>15 Paid Ads prompts (Facebook, Google, LinkedIn)</li><li>15 Landing Page & Funnel prompts</li><li>15 Email Campaign prompts</li><li>15 Offer & Pricing prompts</li><li>15 Analytics & Testing prompts</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Key benefits</h2>
+      <ul class="bullets">
+        <li>Write high-converting ad copy instantly</li><li>Design funnels that convert visitors to buyers</li><li>Optimize campaigns with A/B test prompts</li><li>Scale paid acquisition with proven templates</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How to use the prompts</h2>
+      <ol>
+        <li>Replace the <code>[placeholders]</code> with your product, audience, or business details.</li>
+        <li>Paste the prompt into your AI assistant and review the output.</li>
+        <li>Tweak tone, length, or format to match your brand; iterate until satisfied.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Sample prompts</h2>
+      <div class="sample">
+        <strong>Prompt 5:</strong> Act as a PPC expert. Create 3 Google Ads for [offer], with headlines (≤30 chars) and descriptions (≤90 chars).<br><br><strong>Prompt 22:</strong> Draft a 3-email launch sequence for [product], with subject lines and CTAs.<br><br><strong>Prompt 47:</strong> Suggest 5 A/B test ideas for a landing page selling [product].
+      </div>
+    </section>
+
+    <section class="cta-box">
+      <h2>Grab your copy</h2>
+      <p><strong>Advanced Marketing Playbook: 75 Growth Prompts</strong> is ready to use — download and implement today.</p>
+      <a class="cta-main" href="https://marif670.gumroad.com/l/75prompts" target="_blank">Buy on Gumroad →</a>
+    </section>
+
+    <section class="reviews">
+      <h2>Reviews</h2>
+      <div class="review-item">“The ad formulas are gold — CTR improved immediately.”<br><strong>— Sara, Growth Marketer</strong></div>
+      <div class="review-item">“A must-have for small marketing teams.”<br><strong>— Ibrahim, Agency Owner</strong></div>
+      <div class="review-item">“Helped us scale paid channels with clear prompts.”<br><strong>— Nadia, Ecommerce Manager</strong></div>
+    </section>
+
+    <section class="faq">
+      <h2>FAQ</h2>
+      <div class="faq-item"><h3>Do I need technical skills?</h3><p>No — just copy, paste, and customize.</p></div>
+      <div class="faq-item"><h3>Can I use these prompts in any AI tool?</h3><p>Yes — they work with any assistant or tool that accepts text input.</p></div>
+      <div class="faq-item"><h3>Are updates included?</h3><p>Yes — buyers receive free lifetime updates when we add or improve prompts.</p></div>
+    </section>
+
+    <section class="policy">
+      <h2>Refund & Updates Policy</h2>
+      <p>Due to the digital nature of this product, <strong>all sales are final</strong>. Gumroad will watermark downloads with the buyer's email. Free lifetime updates are included.</p>
+    </section>
+  </div>
+
+  <footer>
+    © 2025 AI Prompt Library — All rights reserved.
+  </footer>
 </body>
 </html>
