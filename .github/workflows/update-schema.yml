@@ -1,33 +1,39 @@
 name: Update JSON-LD Schema
 
 on:
+  workflow_dispatch:   # allow manual run
   schedule:
-    - cron: "0 2 * * *"   # runs every day at 2 AM UTC
-  workflow_dispatch:       # allows manual trigger
+    - cron: "0 2 * * *"   # run daily at 02:00 UTC
+
+permissions:
+  contents: write   # allow pushing changes
 
 jobs:
-  build:
+  update-schema:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install node-fetch@2
+        run: |
+          npm install node-fetch@2
 
-      - name: Run schema updater
+      - name: Run update script
         run: node update-schema.js
 
       - name: Commit and push changes
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git commit -m "🔄 Auto-update JSON-LD schema"
+          git commit -m "🔄 Auto-update JSON-LD schema" || echo "No changes to commit"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
