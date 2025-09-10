@@ -16,7 +16,7 @@ async function fetchProduct(slug) {
     const json = await res.json();
     return json.product;
   } catch (e) {
-    console.error(❌ Failed to fetch ${slug}, e);
+    console.error(`❌ Failed to fetch ${slug}`, e);
     return null;
   }
 }
