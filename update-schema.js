@@ -1,5 +1,5 @@
-import fs from "fs";
-import fetch from "node-fetch";
+const fs = require("fs");
+const fetch = require("node-fetch");
 
 async function fetchProduct(slug) {
   try {
