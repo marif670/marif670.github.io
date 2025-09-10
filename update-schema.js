@@ -9,6 +9,9 @@ const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebu
   try {
     let html = fs.readFileSync("index.html", "utf8");
 
+    // Collect schema blocks for all products
+    let schemaBlocks = "";
+
     for (const slug of slugs) {
       console.log(`📡 Fetching Gumroad product data for slug: ${slug}`);
       const res = await fetch(`https://gumroad.com/l/${slug}.json`);
@@ -19,7 +22,7 @@ const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebu
 
       const p = await res.json();
 
-      // Build schema with fallbacks (no undefined values)
+      // Build schema with fallbacks
       const schema = {
         "@context": "https://schema.org",
         "@type": "Product",
@@ -46,28 +49,30 @@ const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebu
           : {})
       };
 
-      const schemaBlock = `<script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>`;
+      const schemaBlock = `<script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>\n`;
+      schemaBlocks += schemaBlock;
 
-      // --- Insert or replace schema in index.html ---
-      if (html.includes("</head>")) {
-        if (html.includes("application/ld+json")) {
-          console.log(`🔄 Found existing JSON-LD block for ${slug}, replacing it...`);
-          html = html.replace(
-            /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/,
-            schemaBlock
-          );
-        } else {
-          console.log(`➕ No JSON-LD found for ${slug}, inserting new block...`);
-          html = html.replace("</head>", `${schemaBlock}\n</head>`);
-        }
-        console.log(`✅ Inserted schema for ${slug}:`, JSON.stringify(schema).slice(0, 200) + "...");
+      console.log(`✅ Prepared schema for ${slug}:`, JSON.stringify(schema).slice(0, 200) + "...");
+    }
+
+    // --- Insert or replace all schema blocks in index.html ---
+    if (html.includes("</head>")) {
+      if (html.includes("application/ld+json")) {
+        console.log("🔄 Replacing existing JSON-LD blocks...");
+        html = html.replace(
+          /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>\s*/g,
+          ""
+        );
       } else {
-        console.error("❌ Could not find </head> in index.html — schema not inserted.");
+        console.log("➕ No JSON-LD found, inserting new blocks...");
       }
+      html = html.replace("</head>", `${schemaBlocks}\n</head>`);
+    } else {
+      console.error("❌ Could not find </head> in index.html — schema not inserted.");
     }
 
     fs.writeFileSync("index.html", html, "utf8");
-    console.log("🎉 index.html updated successfully with JSON-LD schema.");
+    console.log("🎉 index.html updated successfully with JSON-LD schema for all products.");
   } catch (err) {
     console.error("💥 Script failed:", err);
     process.exit(1);
