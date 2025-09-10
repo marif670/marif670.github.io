@@ -13,7 +13,8 @@ const products = [
 async function fetchProduct(slug) {
   try {
     const res = await fetch(https://gumroad.com/l/${slug}.json);
-    return (await res.json()).product;
+    const json = await res.json();
+    return json.product;
   } catch (e) {
     console.error(❌ Failed to fetch ${slug}, e);
     return null;
@@ -21,7 +22,7 @@ async function fetchProduct(slug) {
 }
 
 (async function updateSchema() {
-  let itemList = [];
+  const itemList = [];
 
   for (const product of products) {
     const p = await fetchProduct(product.slug);
@@ -58,12 +59,18 @@ async function fetchProduct(slug) {
     "itemListElement": itemList
   };
 
-  // Read index.html
+  // Make schema block
+  const schemaBlock = <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>;
+
+  // Read file
   let html = fs.readFileSync("index.html", "utf8");
 
-  // Replace old schema or inject new
-  const schemaBlock = <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>;
-  html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, schemaBlock);
+  // Replace or insert JSON-LD
+  if (html.includes('<script type="application/ld+json">')) {
+    html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, schemaBlock);
+  } else {
+    html = html.replace("</head>", schemaBlock + "\n</head>");
+  }
 
   // Write back
   fs.writeFileSync("index.html", html, "utf8");
