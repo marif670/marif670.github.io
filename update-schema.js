@@ -1,14 +1,5 @@
-// update-schema.js
-const fs = require("fs");
-const fetch = require("node-fetch");
-
-const products = [
-  { slug: "50prompts", position: 1, url: "https://marif670.github.io/book1.html" },
-  { slug: "75prompts", position: 2, url: "https://marif670.github.io/book2.html" },
-  { slug: "100prompts", position: 3, url: "https://marif670.github.io/book3.html" },
-  { slug: "125prompts", position: 4, url: "https://marif670.github.io/book4.html" },
-  { slug: "ultimatebundle", position: 5, url: "https://marif670.github.io/bundle.html" }
-];
+import fs from "fs";
+import fetch from "node-fetch";
 
 async function fetchProduct(slug) {
   try {
@@ -21,58 +12,82 @@ async function fetchProduct(slug) {
   }
 }
 
-(async function updateSchema() {
-  const itemList = [];
+(async () => {
+  const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebundle"];
+  const products = [];
 
-  for (const product of products) {
-    const p = await fetchProduct(product.slug);
-    if (!p) continue;
-
-    itemList.push({
-      "@type": "Product",
-      "position": product.position,
-      "name": p.name,
-      "image": p.preview_url || "",
-      "description": p.description || "",
-      "brand": { "@type": "Brand", "name": "AI Business Tools" },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": p.rating || "4.8",
-        "reviewCount": p.reviews_count || "10"
-      },
-      "offers": {
-        "@type": "Offer",
-        "url": product.url,
-        "priceCurrency": "USD",
-        "price": (p.price / 100).toFixed(2),
-        "priceValidUntil": "2026-01-01",
-        "availability": "https://schema.org/InStock"
-      }
-    });
+  for (const slug of slugs) {
+    const product = await fetchProduct(slug);
+    if (product) products.push(product);
   }
 
   const schema = {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "AI-Powered SMB Prompt Books Collection",
-    "description": "A collection of AI Prompt Books for small businesses and entrepreneurs. Includes 4 books and 1 bundle with 350+ professional prompts.",
-    "itemListElement": itemList
+    "@graph": products.map(p => ({
+      "@type": "Product",
+      "name": p.name,
+      "description": p.description,
+      "image": p.preview_url,
+      "offers": {
+        "@type": "Offer",
+        "url": p.short_url,
+        "priceCurrency": p.currency,
+        "price": p.price,
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2025-12-31",   // update yearly
+        "shippingDetails": {
+          "@type": "OfferShippingDetails",
+          "shippingRate": {
+            "@type": "MonetaryAmount",
+            "value": "0",
+            "currency": "USD"
+          },
+          "deliveryTime": {
+            "@type": "ShippingDeliveryTime",
+            "handlingTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            },
+            "transitTime": {
+              "@type": "QuantitativeValue",
+              "minValue": 0,
+              "maxValue": 0,
+              "unitCode": "DAY"
+            }
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "US",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
+      "aggregateRating": p.rating_count > 0 ? {
+        "@type": "AggregateRating",
+        "ratingValue": p.rating_average,
+        "reviewCount": p.rating_count
+      } : undefined
+    }))
   };
 
-  // Make schema block
-  const schemaBlock = `<script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>`;
+  const schemaBlock = `<script type="application/ld+json">
+${JSON.stringify(schema, null, 2)}
+</script>`;
 
-  // Read file
   let html = fs.readFileSync("index.html", "utf8");
 
-  // Replace or insert JSON-LD
-  if (html.includes('<script type="application/ld+json">')) {
-    html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, schemaBlock);
-  } else {
-    html = html.replace("</head>", schemaBlock + "\n</head>");
-  }
+  // remove old schema
+  html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, "");
 
-  // Write back
+  // inject new schema before </head>
+  html = html.replace("</head>", `${schemaBlock}\n</head>`);
+
   fs.writeFileSync("index.html", html, "utf8");
+
   console.log("✅ Schema updated in index.html");
 })();
