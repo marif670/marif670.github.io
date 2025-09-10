@@ -60,7 +60,7 @@ async function fetchProduct(slug) {
   };
 
   // Make schema block
-  const schemaBlock = <script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>;
+  const schemaBlock = `<script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>`;
 
   // Read file
   let html = fs.readFileSync("index.html", "utf8");
