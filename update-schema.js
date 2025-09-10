@@ -9,8 +9,18 @@ const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebu
   try {
     let html = fs.readFileSync("index.html", "utf8");
 
-    // Collect schema blocks for all products
-    let schemaBlocks = "";
+    // Start @graph with Organization
+    let graph = [
+      {
+        "@type": "Organization",
+        "name": "The AI-Powered SMB",
+        "url": "https://marif670.github.io",
+        "logo": "https://marif670.github.io/logo.png",
+        "sameAs": [
+          "https://gumroad.com/marif670"
+        ]
+      }
+    ];
 
     for (const slug of slugs) {
       console.log(`📡 Fetching Gumroad product data for slug: ${slug}`);
@@ -22,14 +32,17 @@ const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebu
 
       const p = await res.json();
 
-      // Build schema with fallbacks
+      // Build product schema with safe defaults
       const schema = {
-        "@context": "https://schema.org",
         "@type": "Product",
         "name": p.name || "AI Prompt Book",
         "description": p.description || "Exclusive AI prompts collection.",
         "url": `https://gumroad.com/l/${slug}`,
         "image": p.preview_url || "https://marif670.github.io/default-cover.png",
+        "brand": {
+          "@type": "Organization",
+          "name": "The AI-Powered SMB"
+        },
         "offers": {
           "@type": "Offer",
           "priceCurrency": "USD",
@@ -49,30 +62,36 @@ const slugs = ["50prompts", "75prompts", "100prompts", "125prompts", "ultimatebu
           : {})
       };
 
-      const schemaBlock = `<script type="application/ld+json">${JSON.stringify(schema, null, 2)}</script>\n`;
-      schemaBlocks += schemaBlock;
-
-      console.log(`✅ Prepared schema for ${slug}:`, JSON.stringify(schema).slice(0, 200) + "...");
+      graph.push(schema);
+      console.log(`✅ Added schema for ${slug}: ${schema.name}`);
     }
 
-    // --- Insert or replace all schema blocks in index.html ---
+    // Build final @graph JSON-LD
+    const finalSchema = {
+      "@context": "https://schema.org",
+      "@graph": graph
+    };
+
+    const schemaBlock = `<script type="application/ld+json">${JSON.stringify(finalSchema, null, 2)}</script>`;
+
+    // --- Insert or replace schema in index.html ---
     if (html.includes("</head>")) {
       if (html.includes("application/ld+json")) {
-        console.log("🔄 Replacing existing JSON-LD blocks...");
+        console.log("🔄 Replacing existing JSON-LD block...");
         html = html.replace(
-          /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>\s*/g,
-          ""
+          /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/,
+          schemaBlock
         );
       } else {
-        console.log("➕ No JSON-LD found, inserting new blocks...");
+        console.log("➕ Inserting new JSON-LD block...");
+        html = html.replace("</head>", `${schemaBlock}\n</head>`);
       }
-      html = html.replace("</head>", `${schemaBlocks}\n</head>`);
     } else {
       console.error("❌ Could not find </head> in index.html — schema not inserted.");
     }
 
     fs.writeFileSync("index.html", html, "utf8");
-    console.log("🎉 index.html updated successfully with JSON-LD schema for all products.");
+    console.log("🎉 index.html updated successfully with Organization + Products schema.");
   } catch (err) {
     console.error("💥 Script failed:", err);
     process.exit(1);
