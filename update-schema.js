@@ -34,7 +34,7 @@ async function fetchProduct(slug) {
         "priceCurrency": p.currency,
         "price": p.price,
         "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2025-12-31",   // update yearly
+        "priceValidUntil": "2025-12-31",
         "shippingDetails": {
           "@type": "OfferShippingDetails",
           "shippingRate": {
@@ -81,13 +81,18 @@ ${JSON.stringify(schema, null, 2)}
 
   let html = fs.readFileSync("index.html", "utf8");
 
-  // remove old schema
-  html = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, "");
-
-  // inject new schema before </head>
-  html = html.replace("</head>", `${schemaBlock}\n</head>`);
+  if (html.includes("application/ld+json")) {
+    // Replace existing block
+    html = html.replace(
+      /<script type="application\/ld\+json"[^>]*>[\s\S]*?<\/script>/,
+      schemaBlock
+    );
+  } else {
+    // Insert before </head> if no schema exists
+    html = html.replace("</head>", `${schemaBlock}\n</head>`);
+  }
 
   fs.writeFileSync("index.html", html, "utf8");
 
-  console.log("✅ Schema updated in index.html");
+  console.log("✅ Schema injected into index.html");
 })();
