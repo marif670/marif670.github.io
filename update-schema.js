@@ -12,7 +12,7 @@ const products = [
 
 async function fetchProduct(slug) {
   try {
-    const res = await fetch(https://gumroad.com/l/${slug}.json);
+    const res = await fetch(`https://gumroad.com/l/${slug}.json`);
     const json = await res.json();
     return json.product;
   } catch (e) {
