@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /*.jpg*
+Allow: /*.png*
 
 Sitemap: https://marif670.github.io/sitemap_index.xml
