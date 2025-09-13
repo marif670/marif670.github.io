@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marif670.github.io/sitemap.xml
+Sitemap: https://marif670.github.io/sitemap_index.xml
