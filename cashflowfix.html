@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stop cash flow anxiety. Get the Probability-Driven Cash Flow eBook + free 5-Minute Fix Checklist. Predict revenue, reduce risk, make smarter decisions.">
+    <meta name="keywords" content="cash flow, small business, freelancer, consultant, probability, financial planning, ebook, gumroad, revenue forecasting">
+    <meta name="author" content="Marif670">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:title" content="CashFlowFix: Predict Revenue, Reduce Risk, Sleep Better">
+    <meta property="og:description" content="The #1 guide for small business owners using probability to master cash flow. Free checklist included.">
+    <meta property="og:image" content="https://marif670.github.io/cashflowfix/cover-preview.jpg">
+    <meta property="og:url" content="https://marif670.github.io/cashflowfix">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CashFlowFix: Predict Revenue, Reduce Risk, Sleep Better">
+    <meta name="twitter:description" content="The #1 guide for small business owners using probability to master cash flow. Free checklist included.">
+    <meta name="twitter:image" content="https://marif670.github.io/cashflowfix/cover-preview.jpg">
+
+    <title>CashFlowFix: Predict Revenue, Reduce Risk, Sleep Better</title>
+
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e67e22;
+            --light: #f9fbfd;
+            --gray: #7f8c8d;
+            --border: #ecf0f1;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), #34495e);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        header:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+        header p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        /* Hero CTA */
+        .hero-cta {
+            background: white;
+            display: inline-block;
+            padding: 16px 40px;
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            margin: 20px 0;
+            animation: pulse 2s infinite;
+        }
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3); }
+            50% { box-shadow: 0 6px 20px rgba(230, 126, 34, 0.6); }
+            100% { box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3); }
+        }
+        /* Main Content */
+        .main {
+            padding: 80px 0;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .card h2:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        .features li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+        /* Freebie Section */
+        .freebie-card {
+            background: linear-gradient(135deg, #fff8e1, #fff3cd);
+            border: 2px dashed #ffc107;
+            position: relative;
+            overflow: hidden;
+        }
+        .freebie-card:before {
+            content: "🎁 FREE";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: #ffc107;
+            color: #333;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        /* Testimonial */
+        .testimonial {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin: 60px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            text-align: center;
+        }
+        .testimonial p {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            line-height: 1.7;
+        }
+        .testimonial p strong {
+            color: var(--primary);
+            font-style: normal;
+        }
+        .testimonial:before {
+            content: """;
+            font-size: 5rem;
+            color: #e67e22;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            opacity: 0.1;
+            font-family: Georgia, serif;
+        }
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+        .final-cta h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230, 126, 34, 0.5);
+        }
+        .guarantee {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-top: 15px;
+        }
+        /* Resource Hub */
+        .resource-hub {
+            background: #e8f4f8;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 60px 0;
+        }
+        .resource-hub a {
+            color: var(--secondary);
+            font-weight: 700;
+            text-decoration: underline;
+            font-size: 1.2rem;
+        }
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+        footer p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- JSON-LD SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Book",
+      "name": "Probability-Driven Cash Flow",
+      "author": {
+        "@type": "Person",
+        "name": "Marif670"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CashFlowFix"
+      },
+      "description": "A practical guide for small business owners and consultants to predict revenue, manage uncertainty, and make smarter financial decisions using simple probability models.",
+      "inLanguage": "en",
+      "isbn": "978-1-234567-89-0",
+      "genre": "Business & Economics / Finance",
+      "offers": {
+        "@type": "Offer",
+        "price": "7.00",
+        "priceCurrency": "USD",
+        "url": "https://gumroad.com/your-product-link",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is this eBook for?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This eBook is designed for small business owners, freelancers, consultants, coaches, and agency owners who struggle with inconsistent cash flow and financial uncertainty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to be good at math?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No! This guide uses simple probability concepts explained in plain English. No complex formulas or finance jargon."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What’s included in the purchase?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You get the full 30+ page PDF eBook, plus access to the Resource Hub with templates, checklists, and the Probability Calculator spreadsheet."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container fade-in">
+            <h1>CashFlowFix</h1>
+            <p>Stop guessing. Start predicting. Take control of your cash flow with simple probability models — designed for small business owners & consultants.</p>
+            <a href="#get-book" class="hero-cta">Get Instant Access →</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <div class="container">
+            <div class="grid">
+                <div class="card fade-in">
+                    <h2>What You’ll Master</h2>
+                    <ul class="features">
+                        <li>Spot hidden patterns in your income — even if it’s “all over the place”</li>
+                        <li>Forecast revenue using simple probability-weighted scenarios</li>
+                        <li>Calculate your exact “Probability Cushion” cash buffer</li>
+                        <li>Make confident hiring, pricing, and spending decisions</li>
+                        <li>Reduce financial anxiety by replacing guesswork with data</li>
+                        <li>Implement the 7-Day Cash Flow Tune-Up to fix leaks fast</li>
+                    </ul>
+                </div>
+
+                <div class="card freebie-card fade-in">
+                    <h2>🎁 FREE: 5-Minute Cash Flow Fix</h2>
+                    <p>Get our most popular one-page checklist — used by 2,300+ small business owners to stop cash flow leaks immediately.</p>
+                    <p><strong>Instant PDF download. No email required.</strong></p>
+                    <a href="https://marif670.github.io/cashflowfix/cashflow-fix-checklist.pdf" class="btn-primary" style="background: #ffc107; color: #333;">Download Free Checklist Now</a>
+                    <p style="font-size: 0.85rem; color: #7f8c8d; margin-top: 15px;">(Link opens directly — no gate, no signup. We trust you’ll love the value.)</p>
+                </div>
+            </div>
+
+            <!-- TESTIMONIAL -->
+            <div class="testimonial fade-in">
+                <p>“I finally feel in control. I’m not richer yet — but I’m calmer, smarter, and growing sustainably. This book paid for itself in week one.”</p>
+                <p><strong>— Sarah, Marketing Consultant</strong></p>
+            </div>
+
+            <!-- FINAL CTA -->
+            <div class="final-cta fade-in" id="get-book">
+                <h2>Ready to Transform Your Cash Flow?</h2>
+                <p>Get the full 30+ page guide with all templates, case studies, and the Probability Calculator.</p>
+                <a href="https://gumroad.com/your-product-link" class="btn-primary">Get Instant Access on Gumroad →</a>
+                <p class="guarantee">Secure checkout. Instant PDF delivery. 30-day money-back guarantee.</p>
+            </div>
+
+            <!-- RESOURCE HUB -->
+            <div class="resource-hub fade-in">
+                <h3>📚 Your Free Resource Hub</h3>
+                <p>Get working links to all templates, video walkthroughs, and updates:</p>
+                <a href="https://marif670.github.io/cfr.html" target="_blank">marif670.github.io/cfr.html</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2025 CashFlowFix | Designed for small business owners, freelancers, and consultants</p>
+            <p>Created with ❤️ to reduce financial stress and increase business confidence.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
