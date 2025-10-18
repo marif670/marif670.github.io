@@ -1,17 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>USA Trivia Quiz 2025 - American History & Fun Facts Test</title>
-    <meta name="description" content="Test your USA knowledge with this 2025 trivia quiz! Mixed questions on American history, geography, Route 66, Civil War, Founding Fathers, national parks, and more. Can you score 100%?">
-    <meta name="keywords" content="USA trivia quiz 2025, american history test, route 66 facts, civil war trivia, us national parks quiz, founding fathers test, american culture challenge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USA Trivia Quiz 2025 - American History & Fun Facts Test</title>
+  <meta name="description" content="Test your USA knowledge with this 2025 trivia quiz! Mixed questions on American history, geography, Route 66, Civil War, Founding Fathers, national parks, and more. Can you score 100%?">
+  <meta name="keywords" content="USA trivia quiz 2025, american history test, route 66 facts, civil war trivia, us national parks quiz, founding fathers test, american culture challenge">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f0f0f0;
+      padding: 20px;
+      margin: 0;
+    }
+    h1 {
+      color: #000080;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      background: #000;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin: 20px auto;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    button {
+      background-color: #000080;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #0044cc;
+    }
+    a {
+      color: #000080;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; background-color: #f0f0f0; padding: 20px;">
-    <h1 style="color: #000080;">🇺🇸 USA Trivia Quiz 2025 Challenge! 🏆</h1>
-    <p style="font-size: 18px;">Test your American knowledge with mixed trivia on history, geography, Route 66 secrets, Civil War battles, Founding Fathers, national parks, and fun facts. Can you score 100%?</p>
-    <iframe src="https://www.dailymotion.com/embed/video/x9rvcnw?autoplay=1" width="640" height="360" frameborder="0" allowfullscreen></iframe>
-    <p style="font-size: 16px; margin-top: 20px;"><strong>Score yourself and share in comments!</strong> What's your favorite USA topic?</p>
-    <p><a href="https://marif670.github.io">Back to Home</a></p>
+<body>
+  <h1>🇺🇸 USA Trivia Quiz 2025 Challenge! 🏆</h1>
+  <p style="font-size: 18px;">
+    Test your American knowledge with mixed trivia on history, geography, Route 66 secrets, Civil War battles, Founding Fathers, national parks, and fun facts. Can you score 100%?
+  </p>
+
+  <div class="video-container">
+    <iframe
+      id="dm-player"
+      src="https://www.dailymotion.com/embed/video/x9rvcnw?autoplay=1"
+      allow="autoplay; fullscreen; picture-in-picture; encrypted-media"
+      allowfullscreen
+    ></iframe>
+  </div>
+
+  <button onclick="enablePiP()">📺 Continue in Mini Window</button>
+
+  <p style="font-size: 16px; margin-top: 20px;">
+    <strong>Score yourself and share in comments!</strong> What's your favorite USA topic?
+  </p>
+  <p><a href="https://marif670.github.io">Back to Home</a></p>
+
+  <!-- Dailymotion SDK -->
+  <script src="https://api.dmcdn.net/all.js"></script>
+  <script>
+    // Initialize Dailymotion player
+    var player = DM.player(document.getElementById('dm-player'), {
+      video: 'x9rvcnw',
+      width: '100%',
+      height: '100%',
+      params: {
+        autoplay: true,
+        mute: false,
+        'picture-in-picture': true
+      }
+    });
+
+    // Function to toggle Picture-in-Picture
+    function enablePiP() {
+      try {
+        player.togglePictureInPicture();
+      } catch (error) {
+        alert("Your browser doesn't support Picture-in-Picture or it's blocked by settings.");
+      }
+    }
+  </script>
 </body>
 </html>
